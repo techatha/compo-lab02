@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import EventCard from '@/components/EventCard.vue';
-import { ref } from 'vue';
-import type { Event } from '@/type'; // ???
+import EventCard from '@/components/EventCard.vue'
+import CategoryCard from '@/components/CategoryCard.vue'
+import { ref } from 'vue'
+import type { Event } from '@/type' // ???
 
 const events = ref<Event[]>([
   {
@@ -14,7 +15,7 @@ const events = ref<Event[]>([
     time: '12:00',
     petAllowed: true,
     organizer: 'Kat Laydee'
-  }, 
+  },
   {
     id: 4582797,
     category: 'food',
@@ -37,11 +38,28 @@ const events = ref<Event[]>([
     petAllowed: false,
     organizer: 'Carey Wales'
   }
-]);
+])
 </script>
 
 <template>
-  <div class="home">
+  <div class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
+  <div class="category">
+    <CategoryCard v-for="event in events" :key="event.id" :event="event" />
+  </div>
 </template>
+
+<style>
+.events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: right;
+}
+</style>
