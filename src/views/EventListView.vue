@@ -2,16 +2,15 @@
 import EventCard from '@/components/EventCard.vue'
 import CategoryCard from '@/components/CategoryCard.vue'
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
 import type { Event } from '@/type' // ???
+import EventService from '@/services/EventService'
 
 const events = ref<Event[] | null>(null)
 
 onMounted(() => {
-  axios
-    .get('https://my-json-server.typicode.com/techatha/Compo-Lab02-number14/events')
+  EventService.getEvents()
     .then((response) => {
-      console.log(response.data)
+      events.value = response.data
     })
     .catch((error) => {
       console.error('There was an error!', error)
