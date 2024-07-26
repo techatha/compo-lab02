@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { Student } from '@/type' //  ???
+import type { Student } from '@/types' //  ???
 defineProps<{ student: Student }>()
 </script>
 

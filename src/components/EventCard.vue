@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type {Event} from '@/type'; //  ???
-defineProps < { event: Event } >()
+import { type Event } from '@/types'
+defineProps<{ event: Event }>()
 // const event = ref({
 //   id: 5928101,
 //   category: 'animal welfare',

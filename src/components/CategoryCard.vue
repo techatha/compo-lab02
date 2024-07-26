@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type {Event} from '@/type'; //  ???
-defineProps < { event: Event } >()
+import type { Event } from '@/types' //  ???
+defineProps<{ event: Event }>()
 </script>
 
 <template>
-    <div class="event-class">
-        <div class="event-card">
-            <h2>{{ event.category }}</h2>
-            <h2>{{ event.organizer }}</h2>
-        </div>
+  <div class="event-class">
+    <div class="event-card">
+      <h2>{{ event.category }}</h2>
+      <h2>{{ event.organizer }}</h2>
     </div>
+  </div>
 </template>
 
 <style scope>
