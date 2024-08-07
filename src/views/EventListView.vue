@@ -45,6 +45,9 @@ onMounted(() => {
   <div class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
+  <!-- <div class="category">
+    <CategoryCard v-for="event in events" :key="event.id" :event="event" />
+  </div> -->
   <div class="pagination">
     <RouterLink
       :to="{ name: 'event-list-view', query: { page: page - 1 } }"
@@ -52,15 +55,13 @@ onMounted(() => {
       v-if="page != 1"
       >Prev Page</RouterLink
     >
+
     <RouterLink
       :to="{ name: 'event-list-view', query: { page: page + 1 } }"
       rel="next"
       v-if="hasNextPage"
       >Next Page &#62;</RouterLink
     >
-  </div>
-  <div class="category">
-    <CategoryCard v-for="event in events" :key="event.id" :event="event" />
   </div>
 </template>
 

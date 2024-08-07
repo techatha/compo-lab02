@@ -18,4 +18,8 @@ export interface Student {
   gpa: number,
   image: string
 }
+
+export interface MessageState {
+  message: string
+}
   
