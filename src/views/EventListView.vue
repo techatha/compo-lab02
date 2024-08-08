@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import EventCard from '@/components/EventCard.vue'
-import CategoryCard from '@/components/CategoryCard.vue'
+// import CategoryCard from '@/components/CategoryCard.vue'
 import { ref, onMounted, computed, watchEffect } from 'vue'
 import { type Event } from '@/types' // ???
 import EventService from '@/services/EventService'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const events = ref<Event[] | null>(null)
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
@@ -27,14 +29,14 @@ onMounted(() => {
   watchEffect(() => {
     events.value = null
     EventService.getEvents(limit.value, page.value)
-      .then((response) => {
-        events.value = response.data
-        console.log(limit.value)
-        totalEvents.value = response.headers['x-total-count']
-      })
-      .catch((error) => {
-        console.error('There wan an error!', error)
-      })
+    .then((response) => {
+      events.value = response.data
+      console.log(limit.value)
+      totalEvents.value = response.headers['x-total-count']
+    })
+    .catch(() => {
+      router.push({ name: 'network-error-view' })
+    })
   })
 })
 </script>
