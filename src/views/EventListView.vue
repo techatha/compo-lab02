@@ -10,7 +10,7 @@ const router = useRouter()
 const events = ref<Event[] | null>(null)
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
-  const totalPage = Math.ceil(totalEvents.value / 2)
+  const totalPage = Math.ceil(totalEvents.value / 3)
   return page.value < totalPage
 })
 const props = defineProps({
@@ -18,20 +18,13 @@ const props = defineProps({
     type: Number,
     required: true
   },
-  limit: {
-    type: Number,
-    required: true
-  }
 })
 const page = computed(() => props.page)
-const limit = computed(() => props.limit)
 onMounted(() => {
   watchEffect(() => {
-    events.value = null
-    EventService.getEvents(limit.value, page.value)
+    EventService.getEvents(3, page.value)
     .then((response) => {
       events.value = response.data
-      console.log(limit.value)
       totalEvents.value = response.headers['x-total-count']
     })
     .catch(() => {
