@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { useMessageStore } from '@/stores/message';
-import { storeToRefs } from 'pinia';
+import { useMessageStore } from '@/stores/message'
+import { storeToRefs } from 'pinia'
+import './assets/style.css'
 const store = useMessageStore()
 const { message } = storeToRefs(store)
 </script>
 
 <template>
+  <div class="bg-blue-500 text-white">Hello, world!</div>
   <div id="layout">
     <header>
       <div id="flashMessage" v-if="message">
@@ -60,6 +62,6 @@ h2 {
   }
 }
 #flashMessage {
-  animation: yellofade 3s ease-in-out
+  animation: yellofade 3s ease-in-out;
 }
 </style>
