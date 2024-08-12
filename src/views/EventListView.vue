@@ -35,52 +35,28 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Events for Good</h1>
   <!-- new element -->
   <div class="flex flex-col items-center">
+    <h1>Events for Good</h1>
     <EventCard v-for="event in events" :key="event.id" :event="event" />
+    <div class="w-[290px]">
+      <RouterLink
+        :to="{ name: 'event-list-view', query: { page: page - 1 } }"
+        rel="prev" class="text-left text-custom-gray"
+        v-if="page != 1"
+        >&lt; Prev Page</RouterLink
+      >
+      <RouterLink
+        :to="{ name: 'event-list-view', query: { page: page + 1 } }"
+        rel="next" class="text-right text-custom-gray"
+        v-if="hasNextPage"
+        >Next Page &#62;</RouterLink
+      >
+    </div>
   </div>
   <!-- <div class="category">
     <CategoryCard v-for="event in events" :key="event.id" :event="event" />
   </div> -->
-  <div class="pagination">
-    <RouterLink
-      :to="{ name: 'event-list-view', query: { page: page - 1 } }"
-      rel="prev"
-      v-if="page != 1"
-      >Prev Page</RouterLink
-    >
-
-    <RouterLink
-      :to="{ name: 'event-list-view', query: { page: page + 1 } }"
-      rel="next"
-      v-if="hasNextPage"
-      >Next Page &#62;</RouterLink
-    >
-  </div>
 </template>
 
-<style>
-.category {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: right;
-}
-.pagination {
-  display: flex;
-  width: 290px;
-}
-.pagination a {
-  flex: 1;
-  text-decoration: none;
-  color: #2c3e50;
-}
-#page-prev {
-  text-align: left;
-}
-#page-next {
-  text-align: right;
-}
-</style>
 
