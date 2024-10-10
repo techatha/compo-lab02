@@ -3,27 +3,55 @@ import { RouterLink, RouterView } from 'vue-router'
 import { useMessageStore } from '@/stores/message'
 import { storeToRefs } from 'pinia'
 import './assets/style.css'
-import { SpeedInsights } from '@vercel/speed-insights/vue';
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 const store = useMessageStore()
 const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <SpeedInsights/>
+  <SpeedInsights />
   <div id="text-center font-sans text-gray-700 antialias items-center">
     <header>
       <div id="flashMessage" class="animate-fade" v-if="message">
         <h4>{{ message }}</h4>
       </div>
-      <h1>Deploy with Vercel</h1>
+      <!-- <h1>Deploy with Vercel</h1> -->
       <div class="wrapper">
         <nav class="py-6 text-center">
-          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" 
-          :to="{ name: 'event-list-view' }">Event</RouterLink>
-          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" 
-          :to="{ name: 'about' }">About</RouterLink>
-          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" 
-          :to="{ name: 'student' }">Student</RouterLink>
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'event-list-view' }"
+            >Event</RouterLink
+          >
+          |
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'about' }"
+            >About</RouterLink
+          >
+          |
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'student' }"
+            >Student</RouterLink
+          >
+          |
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'add-event' }"
+            >New Event</RouterLink
+          >
+          |
+          <RouterLink
+            class="font-bold text-gray-700"
+            exact-active-class="text-green-500"
+            :to="{ name: 'add-organizer' }"
+            >New Organizer</RouterLink
+          >
         </nav>
       </div>
     </header>

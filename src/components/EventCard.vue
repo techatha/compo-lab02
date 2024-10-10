@@ -19,7 +19,9 @@ defineProps<{ event: Event }>()
     <div class="event-class">
       <div class="event-card cursor-pointer border border-gray-600 p-[20px] w-[250px] mb-[18px] hover:scale-101 hover:shadow-sp">
         <h2>{{ event.title }}</h2>
-        <span>@{{ event.time }} on {{ event.date }}</span>
+        <span>by</span>
+        <h5>{{ event.organizer.name }}</h5>
+        <span>@{{ event.category }} on {{ event.location }}</span>
       </div>
     </div>
   </RouterLink>

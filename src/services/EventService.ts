@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios, { type AxiosResponse } from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/techatha/Compo-Lab02-number14',
+  baseURL: import.meta.env.VITE_BACKEND_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
@@ -11,8 +11,20 @@ const apiClient = axios.create({
 export default {
   getEvents(perPage: Number, page: Number) {
     return apiClient.get('/events?_limit=' + perPage + '&_page=' + page)
-  }, 
-  getEvent(id: Number){
+  },
+  getEvent(id: Number) {
     return apiClient.get('/events/' + id)
+  },
+  saveEvent(event: Event) {
+    return apiClient.post('/events', event)
+  },
+  getEventsByKeyword(
+    keyword: string,
+    perPage: number,
+    page: number
+  ): Promise<AxiosResponse<Event[]>> {
+    return apiClient.get<Event[]>(
+      '/events?title=' + keyword + '&_limit=' + perPage + '&_page=' + page
+    )
   }
 }
