@@ -8,6 +8,7 @@ export interface Event {
     time: string;
     petAllowed: boolean;
     organizer: Organizer;
+    images: string[];
 }
 
 export interface Student {
@@ -30,4 +31,5 @@ export interface EventState {
 export interface Organizer{
   id: number,
   name: string,
+  image: string[]
 }
